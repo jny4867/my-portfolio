@@ -1,16 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
 
   body {
     font-family: 'Pretendard', sans-serif;
-    background-color: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.text};
+    line-height: 1.5;
+    background-color: #fdfdfd;
+    color: #333;
   }
 
   a {
@@ -18,3 +19,5 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 `;
+
+export default GlobalStyle;
