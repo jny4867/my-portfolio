@@ -1,19 +1,18 @@
-import React from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const SidebarContainer = styled.aside<{ $isDark: boolean }>`
   position: fixed;
   left: 0;
   top: 0;
-  width: 300px;
+  width: 380px;
   height: 100vh;
-  background-color: ${(props) => props.theme.colors.sidebarBg};
+  background-color: ${(props) => props.theme.colors.background};
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid ${(props) => props.theme.colors.border};
   z-index: 100;
   overflow-y: auto;
 `;
@@ -65,7 +64,7 @@ const Navigation = styled.nav`
   gap: 0.5rem;
 `;
 
-const NavItem = styled.button<{ $isDark: boolean }>`
+const NavItem = styled.button<{ $isDark: boolean; $isActive: boolean }>`
   padding: 0.75rem 1rem;
   background: transparent;
   border: none;
@@ -76,40 +75,21 @@ const NavItem = styled.button<{ $isDark: boolean }>`
   border-radius: 8px;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
 
-  &::before {
+  &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: ${(props) =>
-      props.$isDark
-        ? 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)'
-        : 'linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent)'};
-    transition: left 0.5s ease;
+    bottom: 0;
+    left: 5%;
+    transform: translateX(0%);
+    width: ${(props) => (props.$isActive ? '40%' : '0%')};
+    height: 0.5px;
+    background: ${(props) => props.theme.colors.text};
+    transition: width 0.3s ease;
   }
 
-  &:hover {
-    background: ${(props) =>
-      props.$isDark
-        ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
-        : 'linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.01) 100%)'};
-    transform: translateX(5px);
-    box-shadow: ${(props) =>
-      props.$isDark
-        ? '0 4px 12px rgba(255, 255, 255, 0.1)'
-        : '0 4px 12px rgba(0, 0, 0, 0.1)'};
-
-    &::before {
-      left: 100%;
-    }
-  }
-
-  &:active {
-    transform: translateX(3px);
+  &:hover::after {
+    width: 40%;
   }
 `;
 
@@ -149,31 +129,45 @@ const SocialLink = styled.a<{ $isDark: boolean }>`
 
 interface SidebarProps {
   onNavClick: (section: string) => void;
+  activeSection: string;
 }
 
-export default function Sidebar({ onNavClick }: SidebarProps) {
+export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
   const { isDarkMode } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <SidebarContainer $isDark={isDarkMode}>
       <div>
         <ProfileSection>
           <ProfileImage $isDark={isDarkMode}>👤</ProfileImage>
-          <Name>전나영</Name>
+          <Name>yon</Name>
           <Bio>
-            신입 Front-End Engineer
+            {t.sidebar.bio.title}
             <br />
-            React를 중심으로 개발하며 사용자 경험을 중시합니다.
+            {t.sidebar.bio.description}
           </Bio>
         </ProfileSection>
         <Navigation>
-          <NavItem $isDark={isDarkMode} onClick={() => onNavClick('about')}>
+          <NavItem
+            $isDark={isDarkMode}
+            $isActive={activeSection === 'about'}
+            onClick={() => onNavClick('about')}
+          >
             ABOUT
           </NavItem>
-          <NavItem $isDark={isDarkMode} onClick={() => onNavClick('experience')}>
+          <NavItem
+            $isDark={isDarkMode}
+            $isActive={activeSection === 'experience'}
+            onClick={() => onNavClick('experience')}
+          >
             EXPERIENCE
           </NavItem>
-          <NavItem $isDark={isDarkMode} onClick={() => onNavClick('projects')}>
+          <NavItem
+            $isDark={isDarkMode}
+            $isActive={activeSection === 'projects'}
+            onClick={() => onNavClick('projects')}
+          >
             PROJECTS
           </NavItem>
         </Navigation>

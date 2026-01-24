@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const ToggleButton = styled.button<{ $isDark: boolean }>`
   position: fixed;
   top: 2rem;
-  right: 2rem;
+  right: 5rem;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -19,7 +20,8 @@ const ToggleButton = styled.button<{ $isDark: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
   transition: all 0.3s ease;
   z-index: 1000;
 
@@ -40,12 +42,17 @@ const ToggleButton = styled.button<{ $isDark: boolean }>`
   }
 `;
 
-export default function ThemeToggle() {
-  const { isDarkMode, toggleTheme } = useTheme();
+export default function LanguageToggle() {
+  const { isDarkMode } = useTheme();
+  const { language, toggleLanguage } = useLanguage();
 
   return (
-    <ToggleButton $isDark={isDarkMode} onClick={toggleTheme} aria-label="테마 토글">
-      {isDarkMode ? '☀️' : '🌙'}
+    <ToggleButton
+      $isDark={isDarkMode}
+      onClick={toggleLanguage}
+      aria-label="언어 토글"
+    >
+      {language === 'kr' ? 'ENG' : 'KR'}
     </ToggleButton>
   );
 }

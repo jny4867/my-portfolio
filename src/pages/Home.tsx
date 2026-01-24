@@ -1,15 +1,17 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import MainContent from '../components/MainContent';
 
 export default function Home() {
   const mainContentRef = useRef<HTMLElement>(null);
+  const [activeSection, setActiveSection] = useState<string>('about');
 
   const handleNavClick = useCallback((section: string) => {
     if (mainContentRef.current) {
       const element = mainContentRef.current.querySelector(`#${section}`);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActiveSection(section);
       }
     }
   }, []);
@@ -25,9 +27,42 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          if (sectionId) {
+            setActiveSection(sectionId);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const sections = ['about', 'experience', 'projects'];
+    sections.forEach((sectionId) => {
+      const element = mainContentRef.current?.querySelector(`#${sectionId}`);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <>
-      <Sidebar onNavClick={handleNavClick} />
+      <Sidebar onNavClick={handleNavClick} activeSection={activeSection} />
       <MainContent ref={mainContentRef} onMouseMove={handleMouseMove} />
     </>
   );
