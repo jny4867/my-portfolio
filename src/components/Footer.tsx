@@ -10,7 +10,7 @@ const Container = styled.footer`
 export default function Footer() {
   return (
     <Container>
-      © 2025 Nayoung All rights reserved.
+      © 2026 Nayoung All rights reserved.
     </Container>
   );
 }
