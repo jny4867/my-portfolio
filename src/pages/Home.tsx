@@ -1,17 +1,34 @@
-import Section from '../components/Section';
+import React, { useRef, useCallback } from 'react';
+import Sidebar from '../components/Sidebar';
+import MainContent from '../components/MainContent';
 
 export default function Home() {
+  const mainContentRef = useRef<HTMLElement>(null);
+
+  const handleNavClick = useCallback((section: string) => {
+    if (mainContentRef.current) {
+      const element = mainContentRef.current.querySelector(`#${section}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    if (mainContentRef.current) {
+      const rect = mainContentRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      
+      mainContentRef.current.style.setProperty('--mouse-x', `${x}%`);
+      mainContentRef.current.style.setProperty('--mouse-y', `${y}%`);
+    }
+  }, []);
+
   return (
     <>
-      <Section title="소개">
-        <p>안녕하세요</p>
-      </Section>
-      <Section title="프로젝트">
-        <p>프로젝트들</p>
-      </Section>
-      <Section title="연락처">
-        <p>이메일</p>
-      </Section>
+      <Sidebar onNavClick={handleNavClick} />
+      <MainContent ref={mainContentRef} onMouseMove={handleMouseMove} />
     </>
   );
 }

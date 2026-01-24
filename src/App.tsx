@@ -1,16 +1,15 @@
-import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './pages/Home';
 import GlobalStyle from './styles/GlobalStyle';
+import { ThemeProvider } from './contexts/ThemeContext';
+import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <GlobalStyle />
-      <Header />
       <Home />
-      <Footer />
-    </>
+      <ThemeToggle />
+    </ThemeProvider>
   );
 }
 

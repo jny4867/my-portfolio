@@ -9,7 +9,7 @@ const Container = styled.header`
 export default function Header() {
   return (
     <Container>
-      <h1>포트폴리오</h1>
+      <h1>Jeon Nayoung</h1>
     </Container>
   );
 }
