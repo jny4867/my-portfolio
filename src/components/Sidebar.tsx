@@ -15,6 +15,21 @@ const SidebarContainer = styled.aside<{ $isDark: boolean }>`
   justify-content: space-between;
   z-index: 100;
   overflow-y: auto;
+
+  @media (max-width: 1024px) {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    & > div:first-child {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
 `;
 
 const ProfileSection = styled.div`
@@ -62,6 +77,10 @@ const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const NavItem = styled.button<{ $isDark: boolean; $isActive: boolean }>`
@@ -99,6 +118,12 @@ const SocialLinks = styled.div`
   justify-content: center;
   padding-top: 2rem;
   border-top: 1px solid ${(props) => props.theme.colors.border};
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
 `;
 
 const SocialLink = styled.a<{ $isDark: boolean }>`
@@ -175,7 +200,7 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
       <SocialLinks>
         <SocialLink
           $isDark={isDarkMode}
-          href="https://github.com"
+          href="https://github.com/jny4867"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"

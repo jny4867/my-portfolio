@@ -23,7 +23,7 @@ export const translations = {
             period: '2024 - 2025',
             description:
               'React와 TypeScript를 활용한 웹 애플리케이션 개발. 사용자 경험을 개선하기 위한 UI/UX 디자인 및 구현. 성능 최적화 및 접근성 향상에 기여.',
-            website: '',
+            website: 'https://programmers.co.kr/',
             github: '',
           },
           {
@@ -31,7 +31,7 @@ export const translations = {
             period: '2023 - 2024',
             description:
               '정보보안 커리큘럼 수료 후, 다크웹인텔리전스 분야에서 Python을 활용한 CLI 자동화 프로그램을 개발하였습니다.',
-            website: '',
+            website: 'https://www.kitribob.kr/',
             github: '',
           },
           {
@@ -39,7 +39,7 @@ export const translations = {
             period: '2019 - 2024',
             description:
               '저는 정보통신공학을 전공하며 데이터의 생성부터 시스템 처리까지의 전체 메커니즘을 익혔습니다. 졸업 작품으로 openCV와 라즈베리파이, 여러 모듈을 통해 사용자의 수면 모습을 촬영하고 분석하여 그래프로 도식화하는 프로젝트를 완성하고, 설비를 제어하는 HMI 앱을 개발하였습니다.',
-            website: '',
+            website: 'https://www.yu.ac.kr/ice/index.do',
             github: '',
           },
         ],

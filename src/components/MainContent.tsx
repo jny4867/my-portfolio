@@ -10,6 +10,11 @@ const MainContainer = styled.main<{ $isDark: boolean }>`
   color: ${(props) => props.theme.colors.text};
   padding: 3rem 4rem;
   transition: background-color 0.3s ease, color 0.3s ease;
+
+  @media (max-width: 1024px) {
+    margin-left: 0;
+    padding: 2rem 1.5rem;
+  }
 `;
 
 const Section = styled.section<{ $isDark: boolean }>`
