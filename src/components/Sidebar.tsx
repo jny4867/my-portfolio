@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
+import profileImg from '../assets/img1.jpg';
 
 const SidebarContainer = styled.aside<{ $isDark: boolean }>`
   position: fixed;
@@ -39,14 +40,16 @@ const ProfileSection = styled.div`
   margin-bottom: 2rem;
 `;
 
-const ProfileImage = styled.div<{ $isDark: boolean }>`
+const ProfileImage = styled.img<{ $isDark: boolean }>`
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  object-fit: cover;
   background: ${(props) =>
     props.$isDark
       ? 'linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%)'
       : 'linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%)'};
+  margin-top: 2rem;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -165,7 +168,7 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
     <SidebarContainer $isDark={isDarkMode}>
       <div>
         <ProfileSection>
-          <ProfileImage $isDark={isDarkMode}>👤</ProfileImage>
+          <ProfileImage src={profileImg} alt='Profile' $isDark={isDarkMode}></ProfileImage>
           <Name>yon</Name>
           <Bio>
             {t.sidebar.bio.title}
