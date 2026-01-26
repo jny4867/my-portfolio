@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import profileImg from '../assets/img1.jpg';
+import React, { useState } from 'react';
 
 const SidebarContainer = styled.aside<{ $isDark: boolean }>`
   position: fixed;
@@ -163,6 +164,18 @@ interface SidebarProps {
 export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
   const { isDarkMode } = useTheme();
   const { t } = useLanguage();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    const email = "jny200067@gmail.com";
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      alert("이메일 주소가 복사되었습니다!"); // 간단한 알림
+      
+      // 2초 후 복사 상태 초기화
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   return (
     <SidebarContainer $isDark={isDarkMode}>
@@ -225,13 +238,23 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
         </SocialLink>
         <SocialLink
           $isDark={isDarkMode}
-          href="https://blog.com"
+          href="https://velog.io/@stonedchild/posts"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Blog"
         >
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2 17h-2v-7h2v7zm-1-8c-.553 0-1-.448-1-1s.447-1 1-1 1 .448 1 1-.447 1-1 1zm9 8h-2v-4c0-1.104-.896-2-2-2s-2 .896-2 2v4H8v-7h2v1.225c.618-1.146 1.884-1.925 3.25-1.925 2.209 0 4 1.791 4 4v3.7z" />
+          </svg>
+        </SocialLink>
+        <SocialLink
+          as='button'
+          $isDark={isDarkMode}
+          onClick={handleCopyEmail}
+          aria-label="Copy Email"
+        >
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
           </svg>
         </SocialLink>
       </SocialLinks>

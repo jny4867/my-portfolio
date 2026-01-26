@@ -156,6 +156,14 @@ const ProjectDescription = styled.p`
   margin-bottom: 0.5rem;
 `;
 
+const ProjectSpecialFeature = styled.p`
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+`;
+
 const ProjectTech = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -359,6 +367,7 @@ const MainContent = forwardRef<HTMLElement, MainContentProps>(
             <ProjectItem key={index} $isDark={isDarkMode}>
               <ProjectTitle>{item.title}</ProjectTitle>
               <ProjectDescription>{item.description}</ProjectDescription>
+              <ProjectSpecialFeature>{item.specialFeature}</ProjectSpecialFeature>
               <ProjectTech>
                 {item.tech.map((tech, techIndex) => (
                   <TechTag key={techIndex} $isDark={isDarkMode}>
