@@ -8,7 +8,7 @@ export interface Theme {
 
 export const lightTheme: Theme = {
   colors: {
-    background: '#ffffff',
+    background: '#fce6e3',
     text: '#000000',
     border: '#e0e0e0',
   },

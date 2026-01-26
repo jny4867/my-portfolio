@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
+import profileImg from '../assets/img1.jpg';
+import React, { useState } from 'react';
 
 const SidebarContainer = styled.aside<{ $isDark: boolean }>`
   position: fixed;
@@ -15,6 +17,22 @@ const SidebarContainer = styled.aside<{ $isDark: boolean }>`
   justify-content: space-between;
   z-index: 100;
   overflow-y: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  @media (max-width: 1024px) {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    & > div:first-child {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
 `;
 
 const ProfileSection = styled.div`
@@ -24,14 +42,16 @@ const ProfileSection = styled.div`
   margin-bottom: 2rem;
 `;
 
-const ProfileImage = styled.div<{ $isDark: boolean }>`
+const ProfileImage = styled.img<{ $isDark: boolean }>`
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  object-fit: cover;
   background: ${(props) =>
     props.$isDark
       ? 'linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%)'
       : 'linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%)'};
+  margin-top: 2rem;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -39,6 +59,7 @@ const ProfileImage = styled.div<{ $isDark: boolean }>`
   font-size: 3rem;
   color: ${(props) => props.theme.colors.text};
   border: 2px solid ${(props) => props.theme.colors.border};
+  transition: all 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 `;
 
 const Name = styled.h1`
@@ -47,6 +68,7 @@ const Name = styled.h1`
   color: ${(props) => props.theme.colors.text};
   margin-bottom: 0.5rem;
   text-align: center;
+  transition: color 0.3s ease;
 `;
 
 const Bio = styled.p`
@@ -56,12 +78,17 @@ const Bio = styled.p`
   line-height: 1.6;
   opacity: 0.8;
   margin-bottom: 2rem;
+  transition: color 0.3s ease;
 `;
 
 const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const NavItem = styled.button<{ $isDark: boolean; $isActive: boolean }>`
@@ -99,6 +126,13 @@ const SocialLinks = styled.div`
   justify-content: center;
   padding-top: 2rem;
   border-top: 1px solid ${(props) => props.theme.colors.border};
+  transition: border-top-color 0.3s ease;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
 `;
 
 const SocialLink = styled.a<{ $isDark: boolean }>`
@@ -127,6 +161,36 @@ const SocialLink = styled.a<{ $isDark: boolean }>`
   }
 `;
 
+const ToastNotification = styled.div<{ $isVisible: boolean; $isDark: boolean }>`
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: ${(props) =>
+    props.$isDark
+      ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.85) 100%)'
+      : 'linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(40, 40, 40, 0.8) 100%)'};
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
+  visibility: ${(props) => (props.$isVisible ? 'visible' : 'hidden')};
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+
+  @media (max-width: 1024px) {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`;
+
 interface SidebarProps {
   onNavClick: (section: string) => void;
   activeSection: string;
@@ -135,12 +199,23 @@ interface SidebarProps {
 export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
   const { isDarkMode } = useTheme();
   const { t } = useLanguage();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    const email = "jny200067@gmail.com";
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      
+      // 2초 후 복사 상태 초기화
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   return (
     <SidebarContainer $isDark={isDarkMode}>
       <div>
         <ProfileSection>
-          <ProfileImage $isDark={isDarkMode}>👤</ProfileImage>
+          <ProfileImage src={profileImg} alt='Profile' $isDark={isDarkMode}></ProfileImage>
           <Name>yon</Name>
           <Bio>
             {t.sidebar.bio.title}
@@ -175,7 +250,7 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
       <SocialLinks>
         <SocialLink
           $isDark={isDarkMode}
-          href="https://github.com"
+          href="https://github.com/jny4867"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
@@ -197,7 +272,7 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
         </SocialLink>
         <SocialLink
           $isDark={isDarkMode}
-          href="https://blog.com"
+          href="https://velog.io/@stonedchild/posts"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Blog"
@@ -206,7 +281,20 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2 17h-2v-7h2v7zm-1-8c-.553 0-1-.448-1-1s.447-1 1-1 1 .448 1 1-.447 1-1 1zm9 8h-2v-4c0-1.104-.896-2-2-2s-2 .896-2 2v4H8v-7h2v1.225c.618-1.146 1.884-1.925 3.25-1.925 2.209 0 4 1.791 4 4v3.7z" />
           </svg>
         </SocialLink>
+        <SocialLink
+          as='button'
+          $isDark={isDarkMode}
+          onClick={handleCopyEmail}
+          aria-label="Copy Email"
+        >
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          </svg>
+        </SocialLink>
       </SocialLinks>
+      <ToastNotification $isVisible={copied} $isDark={isDarkMode}>
+        ✓ 이메일이 복사되었습니다!
+      </ToastNotification>
     </SidebarContainer>
   );
 }

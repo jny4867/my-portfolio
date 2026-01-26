@@ -10,13 +10,18 @@ const MainContainer = styled.main<{ $isDark: boolean }>`
   color: ${(props) => props.theme.colors.text};
   padding: 3rem 4rem;
   transition: background-color 0.3s ease, color 0.3s ease;
+
+  @media (max-width: 1024px) {
+    margin-left: 0;
+    padding: 2rem 1.5rem;
+  }
 `;
 
 const Section = styled.section<{ $isDark: boolean }>`
   margin-bottom: 5rem;
   padding: 2rem;
   border-radius: 12px;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
   position: relative;
   overflow: hidden;
 
@@ -48,6 +53,7 @@ const SectionTitle = styled.h2`
   color: ${(props) => props.theme.colors.text};
   position: relative;
   padding-bottom: 1rem;
+  transition: color 0.3s ease;
 
   &::after {
     content: '';
@@ -60,6 +66,7 @@ const SectionTitle = styled.h2`
       props.theme.colors.text === '#ffffff'
         ? 'linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent)'
         : 'linear-gradient(90deg, rgba(0, 0, 0, 0.8), transparent)'};
+    transition: background 0.3s ease;
   }
 `;
 
@@ -68,6 +75,7 @@ const SectionContent = styled.div`
   line-height: 1.7;
   color: ${(props) => props.theme.colors.text};
   opacity: 0.9;
+  transition: color 0.3s ease;
 `;
 
 const ExperienceItem = styled.div<{ $isDark: boolean }>`
@@ -75,7 +83,7 @@ const ExperienceItem = styled.div<{ $isDark: boolean }>`
   padding: 1.5rem;
   border-radius: 8px;
   /* border-left: 3px solid ${(props) => props.theme.colors.border}; */
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 
   /* &:hover {
     background: ${(props) =>
@@ -97,18 +105,21 @@ const ExperienceTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: ${(props) => props.theme.colors.text};
+  transition: color 0.3s ease;
 `;
 
 const ExperiencePeriod = styled.p`
   font-size: 0.9rem;
   opacity: 0.7;
   margin-bottom: 1rem;
+  transition: color 0.3s ease;
 `;
 
 const ExperienceDescription = styled.p`
   font-size: 0.9rem;
   line-height: 1.6;
   opacity: 0.85;
+  transition: color 0.3s ease;
 `;
 
 const ProjectItem = styled.div<{ $isDark: boolean }>`
@@ -116,7 +127,7 @@ const ProjectItem = styled.div<{ $isDark: boolean }>`
   padding: 1.5rem;
   border-radius: 8px;
   /* border: 1px solid ${(props) => props.theme.colors.border}; */
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 
   /* &:hover {
     background: ${(props) =>
@@ -142,6 +153,7 @@ const ProjectTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: ${(props) => props.theme.colors.text};
+  transition: color 0.3s ease;
 `;
 
 const ProjectDescription = styled.p`
@@ -149,6 +161,16 @@ const ProjectDescription = styled.p`
   line-height: 1.6;
   opacity: 0.85;
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+`;
+
+const ProjectSpecialFeature = styled.p`
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
 `;
 
 const ProjectTech = styled.div`
@@ -167,6 +189,7 @@ const TechTag = styled.span<{ $isDark: boolean }>`
       ? 'rgba(255, 255, 255, 0.1)'
       : 'rgba(0, 0, 0, 0.05)'};
   border: 1px solid ${(props) => props.theme.colors.border};
+  transition: all 0.3s ease;
 `;
 
 const LinkContainer = styled.div`
@@ -354,6 +377,7 @@ const MainContent = forwardRef<HTMLElement, MainContentProps>(
             <ProjectItem key={index} $isDark={isDarkMode}>
               <ProjectTitle>{item.title}</ProjectTitle>
               <ProjectDescription>{item.description}</ProjectDescription>
+              <ProjectSpecialFeature>{item.specialFeature}</ProjectSpecialFeature>
               <ProjectTech>
                 {item.tech.map((tech, techIndex) => (
                   <TechTag key={techIndex} $isDark={isDarkMode}>
