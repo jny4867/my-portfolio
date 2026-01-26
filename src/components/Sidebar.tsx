@@ -156,6 +156,36 @@ const SocialLink = styled.a<{ $isDark: boolean }>`
   }
 `;
 
+const ToastNotification = styled.div<{ $isVisible: boolean; $isDark: boolean }>`
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: ${(props) =>
+    props.$isDark
+      ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.85) 100%)'
+      : 'linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(40, 40, 40, 0.8) 100%)'};
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
+  visibility: ${(props) => (props.$isVisible ? 'visible' : 'hidden')};
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+
+  @media (max-width: 1024px) {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`;
+
 interface SidebarProps {
   onNavClick: (section: string) => void;
   activeSection: string;
@@ -170,7 +200,6 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
     const email = "jny200067@gmail.com";
     navigator.clipboard.writeText(email).then(() => {
       setCopied(true);
-      alert("이메일 주소가 복사되었습니다!"); // 간단한 알림
       
       // 2초 후 복사 상태 초기화
       setTimeout(() => setCopied(false), 2000);
@@ -258,6 +287,9 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
           </svg>
         </SocialLink>
       </SocialLinks>
+      <ToastNotification $isVisible={copied} $isDark={isDarkMode}>
+        ✓ 이메일이 복사되었습니다!
+      </ToastNotification>
     </SidebarContainer>
   );
 }
