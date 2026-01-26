@@ -3,7 +3,7 @@ export const translations = {
     sidebar: {
       bio: {
         title: 'Full-Stack Developer',
-        description: ['NodeJS, TypeScript, React를 중심으로 개발하며, 심플한 UI와 편안한 사용자 경험을 중시합니다.',''],
+        description: 'NodeJS, TypeScript, React를 중심으로 개발하며, 심플한 UI와 편안한 사용자 경험을 중시합니다.',
       },
     },
     sections: {
@@ -95,8 +95,8 @@ export const translations = {
   en: {
     sidebar: {
       bio: {
-        title: 'Junior Front-End Engineer',
-        description: 'I develop with React as the core, prioritizing user experience.',
+        title: 'Full-Stack Developer',
+        description: 'I develop with NodeJS, TypeScript, and React as the core, prioritizing simple UI and user experience.',
       },
     },
     sections: {
@@ -120,7 +120,7 @@ export const translations = {
             github: '',
           },
           {
-            title: 'KITI WhiteHat School',
+            title: 'KITRI WhiteHat School',
             period: '2023 - 2024',
             description:
               'After completing the information security curriculum, I developed a CLI automation program using Python in the dark web intelligence field.',
@@ -145,7 +145,7 @@ export const translations = {
             title: 'Portfolio Website',
             description:
               'The personal portfolio website you are currently viewing, built with React and TypeScript. I strived to implement UI and UX that intuitively represents the work style of developer Nayoung Jeon. Implemented dark mode support and responsive design.',
-            specialFeature: 'Dark mode and responsive design implementation',
+            specialFeature: 'Dark mode, multilingual support and responsive design',
             tech: ['React', 'TypeScript', 'Styled Components'],
             website: '',
             github: '',
@@ -153,7 +153,7 @@ export const translations = {
           {
             title: 'Wayferer',
             description: 'WebSocket-based multi-user travel planner web application',
-            specialFeature: 'Real-time collaboration and WebSocket communication',
+            specialFeature: 'GoogleMap API integration, real-time chat and collaborative scheduling',
             tech: ['React', 'TypeScript', 'Styled-Component'],
             website: '',
             github: '',
@@ -161,7 +161,7 @@ export const translations = {
           {
             title: 'MUX',
             description: 'Music community providing various features such as file upload, listening, and bulletin board',
-            specialFeature: 'Multimedia file handling and community features',
+            specialFeature: 'YouTube API integration, multimedia file handling, notifications and community features',
             tech: ['React', 'JavaScript', 'Styled-Component'],
             website: '',
             github: '',
@@ -169,7 +169,7 @@ export const translations = {
           {
             title: 'Echo-Tracker',
             description: 'A program to check the activity of threat actors in forums where illegal transactions occur (Data collection and monitoring automation solution)',
-            specialFeature: 'Automated data collection and threat monitoring',
+            specialFeature: 'Custom header spoofing for anonymity, automated threat monitoring and data collection',
             tech: ['Python', 'Dark Web Intelligence'],
             website: '',
             github: '',
@@ -177,7 +177,7 @@ export const translations = {
           {
             title: 'Real-time Sleep Pattern Analysis and Environment Control System based on Image Processing',
             description: 'IoT solution using OpenCV and Embedded System (Integrated system for real-time data collection and facility control)',
-            specialFeature: 'Real-time image processing and IoT device integration',
+            specialFeature: 'Real-time image processing, user sleep pattern analysis and IoT device integration',
             tech: ['OpenCV', 'Python', 'Java', 'AndroidStudio', 'WebSocket'],
             website: '',
             github: '',

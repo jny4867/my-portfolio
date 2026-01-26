@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import profileImg from '../assets/img1.jpg';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const SidebarContainer = styled.aside<{ $isDark: boolean }>`
   position: fixed;
