@@ -17,6 +17,7 @@ const SidebarContainer = styled.aside<{ $isDark: boolean }>`
   justify-content: space-between;
   z-index: 100;
   overflow-y: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   @media (max-width: 1024px) {
     position: static;
@@ -58,6 +59,7 @@ const ProfileImage = styled.img<{ $isDark: boolean }>`
   font-size: 3rem;
   color: ${(props) => props.theme.colors.text};
   border: 2px solid ${(props) => props.theme.colors.border};
+  transition: all 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 `;
 
 const Name = styled.h1`
@@ -66,6 +68,7 @@ const Name = styled.h1`
   color: ${(props) => props.theme.colors.text};
   margin-bottom: 0.5rem;
   text-align: center;
+  transition: color 0.3s ease;
 `;
 
 const Bio = styled.p`
@@ -75,6 +78,7 @@ const Bio = styled.p`
   line-height: 1.6;
   opacity: 0.8;
   margin-bottom: 2rem;
+  transition: color 0.3s ease;
 `;
 
 const Navigation = styled.nav`
@@ -122,6 +126,7 @@ const SocialLinks = styled.div`
   justify-content: center;
   padding-top: 2rem;
   border-top: 1px solid ${(props) => props.theme.colors.border};
+  transition: border-top-color 0.3s ease;
 
   @media (max-width: 1024px) {
     width: 100%;
