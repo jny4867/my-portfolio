@@ -13,9 +13,9 @@ const FlashlightOverlay = styled.div<{ $isDark: boolean }>`
   background: ${(props) =>
     props.$isDark
       ? 'radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 70%)'
-      : 'radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 40%, transparent 70%)'};
-  mix-blend-mode: ${(props) => (props.$isDark ? 'screen' : 'normal')};
-  transition: background 0.15s ease-out;
+      : 'radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250, 128, 248, 0.12) 0%, rgba(250, 128, 248, 0.04) 40%, transparent 70%)'};
+  /* mix-blend-mode: ${(props) => (props.$isDark ? 'screen' : 'overlay')}; */
+  /* transition: background 0.15s ease-out, mix-blend-mode 0.15s ease-out; */
 `;
 
 export default function FlashlightEffect() {
