@@ -216,11 +216,15 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
       <div>
         <ProfileSection>
           <ProfileImage src={profileImg} alt='Profile' $isDark={isDarkMode}></ProfileImage>
-          <Name>yon</Name>
+          <Name>전나영</Name>
           <Bio>
             {t.sidebar.bio.title}
             <br />
-            {t.sidebar.bio.description}
+            {t.sidebar.bio.description.map((line, index) => (
+              <div key={index}>
+                {line}
+              </div>
+            ))}
           </Bio>
         </ProfileSection>
         <Navigation>

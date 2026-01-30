@@ -47,7 +47,7 @@ const Section = styled.section<{ $isDark: boolean }>`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
+  font-size: 2.0rem;
   font-weight: 700;
   margin-bottom: 2rem;
   color: ${(props) => props.theme.colors.text};
@@ -148,7 +148,7 @@ const ProjectItem = styled.div<{ $isDark: boolean }>`
   }
 `;
 
-const ProjectTitle = styled.h3`
+const ProjectTitle = styled.h2`
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -310,7 +310,7 @@ const MainContent = forwardRef<HTMLElement, MainContentProps>(
           <SectionContent>
             {t.sections.about.content.map((paragraph, index) => (
               <React.Fragment key={index}>
-                {index > 0 && <br />}
+                {/* {index > 0 && <br />} */}
                 <p>{paragraph}</p>
               </React.Fragment>
             ))}
