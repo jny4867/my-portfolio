@@ -2,27 +2,31 @@ export const translations = {
   kr: {
     sidebar: {
       bio: {
-        title: 'Full-Stack Developer',
-        description: ['NodeJS, TypeScript, React를 중심으로 개발하며, 심플한 UI와 편안한 사용자 경험을 중시합니다.',''],
+        title: '안녕하세요. 프론트엔드 개발자 전나영입니다.',
+        description: [
+          'React를 중심으로 프론트엔드를 개발합니다.',
+          '제 역량을 발휘해서 함께 제품을 개발하며 성장시킬 곳을 찾고 있습니다.',
+        ]
       },
     },
     sections: {
       about: {
-        title: 'ABOUT',
+        title: '핵심 역량',
         content: [
-          '저는 디자인과 사용자의 편의성을 모두 중시하는 개발자입니다. 안타까운 UI와 불편한 UX가 없는 세상을 꿈꿉니다... 사용자의 경험을 향상시키는 방법을 항상 고민하고 있습니다.',
-          '사용자 중심의 사고를 바탕으로 직관적이고 아름다운 인터페이스를 만드는 것을 목표로 하고 있습니다. 최신 기술 트렌드를 학습하고 적용하는 것에 관심이 많으며, 코드의 가독성과 유지보수성을 중요하게 생각합니다.',
+          '유연하게 소통하며 개발합니다.',
+          '자원의 소모를 줄이는 방법을 항상 고민하며,',
+          '유지보수성과 확장성을 고려한 코드를 작성합니다.',
         ],
       },
       experience: {
-        title: 'EXPERIENCE',
+        title: '경험',
         viewAllResume: '전체 이력서 보기',
         items: [
           {
             title: '프로그래머스 데브코스',
             period: '2024 - 2025',
             description:
-              'NodeJS, React와 TypeScript를 활용한 웹 애플리케이션을 개발하였습니다. 아이디어 구상부터 문서화, 사용자 경험을 개선하기 위한 UI/UX 디자인 및 구현, 개발, 배포까지 전 사이클을 경험하였습니다. ',
+              ['아이디어 구상부터 문서화, 사용자 경험을 개선하기 위한 UI/UX 디자인 및 구현, 개발, 배포까지 전 사이클을 경험하였습니다.','NodeJS, React와 TypeScript'],
             website: 'https://programmers.co.kr/',
             github: '',
           },
@@ -95,13 +99,13 @@ export const translations = {
   en: {
     sidebar: {
       bio: {
-        title: 'Junior Front-End Engineer',
-        description: 'I develop with React as the core, prioritizing user experience.',
+        title: 'Hi, I\'m a FrontEnd Developer, Nayoung Jeon.',
+        description: ['I develop with React as the core', 'prioritizing simple UI and user experience.',]
       },
     },
     sections: {
       about: {
-        title: 'ABOUT',
+        title: 'Key Competencies',
         content: [
           'I am a front-end developer who values both design and user convenience. I develop primarily with React, and I hate ugly UIs and inconvenient UX the most in the world, always thinking about ways to improve user experience.',
           'My goal is to create intuitive and beautiful interfaces based on user-centered thinking. I am very interested in learning and applying the latest technology trends, and I value code readability and maintainability.',
@@ -120,7 +124,7 @@ export const translations = {
             github: '',
           },
           {
-            title: 'KITI WhiteHat School',
+            title: 'KITRI WhiteHat School',
             period: '2023 - 2024',
             description:
               'After completing the information security curriculum, I developed a CLI automation program using Python in the dark web intelligence field.',
@@ -145,7 +149,7 @@ export const translations = {
             title: 'Portfolio Website',
             description:
               'The personal portfolio website you are currently viewing, built with React and TypeScript. I strived to implement UI and UX that intuitively represents the work style of developer Nayoung Jeon. Implemented dark mode support and responsive design.',
-            specialFeature: 'Dark mode and responsive design implementation',
+            specialFeature: 'Dark mode, multilingual support and responsive design',
             tech: ['React', 'TypeScript', 'Styled Components'],
             website: '',
             github: '',
@@ -153,7 +157,7 @@ export const translations = {
           {
             title: 'Wayferer',
             description: 'WebSocket-based multi-user travel planner web application',
-            specialFeature: 'Real-time collaboration and WebSocket communication',
+            specialFeature: 'GoogleMap API integration, real-time chat and collaborative scheduling',
             tech: ['React', 'TypeScript', 'Styled-Component'],
             website: '',
             github: '',
@@ -161,7 +165,7 @@ export const translations = {
           {
             title: 'MUX',
             description: 'Music community providing various features such as file upload, listening, and bulletin board',
-            specialFeature: 'Multimedia file handling and community features',
+            specialFeature: 'YouTube API integration, multimedia file handling, notifications and community features',
             tech: ['React', 'JavaScript', 'Styled-Component'],
             website: '',
             github: '',
@@ -169,7 +173,7 @@ export const translations = {
           {
             title: 'Echo-Tracker',
             description: 'A program to check the activity of threat actors in forums where illegal transactions occur (Data collection and monitoring automation solution)',
-            specialFeature: 'Automated data collection and threat monitoring',
+            specialFeature: 'Custom header spoofing for anonymity, automated threat monitoring and data collection',
             tech: ['Python', 'Dark Web Intelligence'],
             website: '',
             github: '',
@@ -177,7 +181,7 @@ export const translations = {
           {
             title: 'Real-time Sleep Pattern Analysis and Environment Control System based on Image Processing',
             description: 'IoT solution using OpenCV and Embedded System (Integrated system for real-time data collection and facility control)',
-            specialFeature: 'Real-time image processing and IoT device integration',
+            specialFeature: 'Real-time image processing, user sleep pattern analysis and IoT device integration',
             tech: ['OpenCV', 'Python', 'Java', 'AndroidStudio', 'WebSocket'],
             website: '',
             github: '',

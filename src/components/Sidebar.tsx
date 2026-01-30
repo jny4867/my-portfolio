@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import profileImg from '../assets/img1.jpg';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const SidebarContainer = styled.aside<{ $isDark: boolean }>`
   position: fixed;
@@ -216,11 +216,15 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
       <div>
         <ProfileSection>
           <ProfileImage src={profileImg} alt='Profile' $isDark={isDarkMode}></ProfileImage>
-          <Name>yon</Name>
+          <Name>전나영</Name>
           <Bio>
             {t.sidebar.bio.title}
             <br />
-            {t.sidebar.bio.description}
+            {t.sidebar.bio.description.map((line, index) => (
+              <div key={index}>
+                {line}
+              </div>
+            ))}
           </Bio>
         </ProfileSection>
         <Navigation>
