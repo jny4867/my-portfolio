@@ -156,6 +156,13 @@ const ProjectTitle = styled.h2`
   transition: color 0.3s ease;
 `;
 
+const ProjectPeriod = styled.p`
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+`;
+
 const ProjectDescription = styled.p`
   font-size: 0.9rem;
   line-height: 1.6;
@@ -360,7 +367,7 @@ const MainContent = forwardRef<HTMLElement, MainContentProps>(
           ))}
           <PdfButton
             $isDark={isDarkMode}
-            href="#"
+            href="https://drive.google.com/file/d/1vPlf11_vMGCzxh3w9dshBDSztCfxr3VF/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -376,6 +383,7 @@ const MainContent = forwardRef<HTMLElement, MainContentProps>(
           {t.sections.projects.items.map((item, index) => (
             <ProjectItem key={index} $isDark={isDarkMode}>
               <ProjectTitle>{item.title}</ProjectTitle>
+              <ProjectPeriod>{item.year}</ProjectPeriod>
               <ProjectDescription>{item.description}</ProjectDescription>
               <ProjectSpecialFeature>{item.specialFeature}</ProjectSpecialFeature>
               <ProjectTech>
