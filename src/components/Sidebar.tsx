@@ -216,7 +216,7 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
       <div>
         <ProfileSection>
           <ProfileImage src={profileImg} alt='Profile' $isDark={isDarkMode}></ProfileImage>
-          <Name>전나영</Name>
+          <Name>{t.sidebar.name.first} {t.sidebar.name.last}</Name>
           <Bio>
             {t.sidebar.bio.title}
             <br />
@@ -227,27 +227,27 @@ export default function Sidebar({ onNavClick, activeSection }: SidebarProps) {
             ))}
           </Bio>
         </ProfileSection>
-        <Navigation>
+     <Navigation>
           <NavItem
             $isDark={isDarkMode}
             $isActive={activeSection === 'about'}
             onClick={() => onNavClick('about')}
           >
-            ABOUT
+            {t.sidebar.nav.about} 
           </NavItem>
           <NavItem
             $isDark={isDarkMode}
             $isActive={activeSection === 'experience'}
             onClick={() => onNavClick('experience')}
           >
-            EXPERIENCE
+            {t.sidebar.nav.experience}
           </NavItem>
           <NavItem
             $isDark={isDarkMode}
             $isActive={activeSection === 'projects'}
             onClick={() => onNavClick('projects')}
           >
-            PROJECTS
+            {t.sidebar.nav.projects}
           </NavItem>
         </Navigation>
       </div>
